@@ -1,0 +1,64 @@
+-- This file has been generated from package.yaml by hpack version 0.20.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 8b315af5d535e066d65519db822b37d5114298c58ff583c1f892874772aed067
+
+name:           test1
+version:        0.1.0.0
+description:    Please see the README on Github at <https://github.com/githubuser/test1#readme>
+homepage:       https://github.com/githubuser/test1#readme
+bug-reports:    https://github.com/githubuser/test1/issues
+author:         Author name here
+maintainer:     example@example.com
+copyright:      2018 Author name here
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+cabal-version:  >= 1.10
+
+extra-source-files:
+    ChangeLog.md
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/githubuser/test1
+
+library
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+  exposed-modules:
+      Lib
+  other-modules:
+      Paths_test1
+  default-language: Haskell2010
+
+executable test1-exe
+  main-is: Main.hs
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  default-extensions: OverloadedStrings
+  build-depends:     base >= 4.7 && < 5
+                   , http-types
+                   , wai
+                   , warp
+  other-modules:
+      Paths_test1
+  default-language: Haskell2010
+
+test-suite test1-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , test1
+  other-modules:
+      Paths_test1
+  default-language: Haskell2010

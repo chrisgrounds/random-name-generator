@@ -19,5 +19,5 @@ app :: Application
 app _req f =
   f response
   where
-    response = responseLBS status200 [(hContentType, "text/plain")] "Piu."
+    response = responseLBS status200 [(hContentType, "text/plain")] "1,2,3... Haskell is on Heroku!"
 

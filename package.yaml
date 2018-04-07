@@ -35,6 +35,15 @@ executables:
     - -with-rtsopts=-N
     dependencies:
     - test1
+    build-depends:
+    - base,
+    - aeson,
+    - servant,
+    - servant-server,
+    - stm,
+    - text,
+    - transformers,
+    - warp
 
 tests:
   test1-test:

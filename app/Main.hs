@@ -19,5 +19,5 @@ app :: Application
 app _req f =
   f response
   where
-    response = responseLBS status200 [(hContentType, "json/application")] "{ \"language\": \"haskell\"}"
+    response = responseLBS status200 [(hContentType, "application/json")] "{ \"language\": \"haskell\"}"
 

@@ -1,28 +1,23 @@
 module Main where
 
+import Control.Monad -- (liftM, join)
+import Data.ByteString.Lazy.Char8 (pack, unpack)
 import Data.Monoid ((<>))
 import Data.Maybe (fromMaybe)
 import System.Environment (lookupEnv)
 import System.Random (randomRIO)
 import Network.Wai (Application, responseLBS)
+import Network.Wai.Internal
 import Network.Wai.Handler.Warp (run)
 import Network.HTTP.Types (status200)
 import Network.HTTP.Types.Header (hContentType)
-import Data.ByteString.Lazy.Char8 (pack, unpack)
 
 main :: IO ()
 main =
     do
       port <- fmap (fromMaybe "3000") (lookupEnv "PORT")
       putStrLn ("Serving at " <> port)
-      let endAs = length adjs - 1
-      let endNs = length nouns - 1
-      randomAdj <- randomRIO (0, endAs)
-      randomNouns <- randomRIO (0, endNs)
-      let adj = adjs !! randomAdj
-      let noun = nouns !! randomNouns
-      let randomName = mconcat ["{\"name\": \"", adj, "_", noun, "\"}"]
-      run (read port) (app randomName)
+      run (read port) app 
 
 adjs = ["admiring",
     "adoring",
@@ -98,9 +93,23 @@ nouns = ["lake",
     "cloud",
     "fog"]
 
+endAs = length adjs - 1
+endNs = length nouns - 1
 
-app :: String -> Application
-app htmlContent _req f = f $ response
+getRandomName :: IO String
+getRandomName = do
+    randomAdj <- randomRIO (0, endAs)
+    randomNouns <- randomRIO (0, endNs)
+    let adj = adjs !! randomAdj
+    let noun = nouns !! randomNouns
+    let randomName = mconcat ["{\"name\": \"", adj, "_", noun, "\"}"]
+    return randomName
+
+app :: Application
+app _req f = join $ f `liftM` response
     where
-        response = responseLBS status200 [(hContentType, "application/json")] (pack htmlContent)
+        response :: IO Response
+        response = do
+            n <- getRandomName
+            return $ responseLBS status200 [(hContentType, "application/json")] (pack n)
 

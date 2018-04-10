@@ -46,6 +46,8 @@ executable test1-exe
                    , http-types
                    , wai
                    , warp
+                   , random
+                   , bytestring
   other-modules:
       Paths_test1
   default-language: Haskell2010

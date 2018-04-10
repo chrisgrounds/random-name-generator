@@ -1,1 +1,1 @@
-web: test1-exe
+web: randomNameGenerator

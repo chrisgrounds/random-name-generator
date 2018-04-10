@@ -4,7 +4,7 @@
 --
 -- hash: 8b315af5d535e066d65519db822b37d5114298c58ff583c1f892874772aed067
 
-name:           test1
+name:           randomNameGenerator
 version:        0.1.0.0
 description:    Please see the README on Github at <https://github.com/githubuser/test1#readme>
 homepage:       https://github.com/githubuser/test1#readme
@@ -32,11 +32,9 @@ library
       base >=4.7 && <5
   exposed-modules:
       Lib
-  other-modules:
-      Paths_test1
   default-language: Haskell2010
 
-executable test1-exe
+executable randomNameGenerator
   main-is: Main.hs
   hs-source-dirs:
       app
@@ -48,11 +46,9 @@ executable test1-exe
                    , warp
                    , random
                    , bytestring
-  other-modules:
-      Paths_test1
   default-language: Haskell2010
 
-test-suite test1-test
+test-suite randomNameGenerator-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   hs-source-dirs:
@@ -60,7 +56,5 @@ test-suite test1-test
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.7 && <5
-    , test1
-  other-modules:
-      Paths_test1
+    , randomNameGenerator
   default-language: Haskell2010

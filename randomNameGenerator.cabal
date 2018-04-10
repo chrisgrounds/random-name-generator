@@ -26,12 +26,9 @@ source-repository head
   location: https://github.com/githubuser/test1
 
 library
-  hs-source-dirs:
-      src
-  build-depends:
-      base >=4.7 && <5
-  exposed-modules:
-      Lib
+  hs-source-dirs: src
+  build-depends: base >=4.7 && <5
+  exposed-modules: Vocabulary
   default-language: Haskell2010
 
 executable randomNameGenerator
@@ -46,6 +43,7 @@ executable randomNameGenerator
                    , warp
                    , random
                    , bytestring
+                   , randomNameGenerator
   default-language: Haskell2010
 
 test-suite randomNameGenerator-test

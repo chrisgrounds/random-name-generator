@@ -1,6 +1,6 @@
 module Main where
 
-import Control.Monad -- (liftM, join)
+import Control.Monad (liftM, join)
 import Data.ByteString.Lazy.Char8 (pack, unpack)
 import Data.Monoid ((<>))
 import Data.Maybe (fromMaybe)
@@ -12,6 +12,8 @@ import Network.Wai.Handler.Warp (run)
 import Network.HTTP.Types (status200)
 import Network.HTTP.Types.Header (hContentType)
 
+import Vocabulary (adjs, nouns)
+
 main :: IO ()
 main =
     do
@@ -19,79 +21,6 @@ main =
       putStrLn ("Serving at " <> port)
       run (read port) app 
 
-adjs = ["admiring",
-    "adoring",
-    "agitated",
-    "angry",
-    "backstabbing",
-    "berserk",
-    "boring",
-    "clever",
-    "cocky",
-    "compassionate",
-    "condescending",
-    "cranky",
-    "desperate",
-    "determined",
-    "distracted",
-    "dreamy",
-    "drunk",
-    "ecstatic",
-    "elated",
-    "elegant",
-    "evil",
-    "fervent",
-    "focused",
-    "furious",
-    "gloomy",
-    "goofy",
-    "grave",
-    "happy",
-    "high",
-    "hopeful",
-    "hungry",
-    "insane",
-    "jolly",
-    "jovial",
-    "kickass",
-    "lonely",
-    "loving",
-    "mad",
-    "modest",
-    "naughty",
-    "nostalgic",
-    "pensive",
-    "prickly",
-    "reverent",
-    "romantic",
-    "sad",
-    "serene",
-    "sharp",
-    "sick",
-    "silly",
-    "sleepy",
-    "stoic",
-    "stupefied",
-    "suspicious",
-    "tender",
-    "thirsty",
-    "trusting"]
-
-nouns = ["lake",
-    "mountain",
-    "plateau",
-    "fjord",
-    "hilltop",
-    "valley",
-    "gorge",
-    "canyon",
-    "peak",
-    "trough",
-    "stream",
-    "river",
-    "sea",
-    "cloud",
-    "fog"]
 
 endAs = length adjs - 1
 endNs = length nouns - 1

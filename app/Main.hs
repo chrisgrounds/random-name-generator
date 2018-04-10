@@ -15,12 +15,10 @@ import Network.HTTP.Types.Header (hContentType)
 import Vocabulary (adjs, nouns)
 
 main :: IO ()
-main =
-    do
+main = do
       port <- fmap (fromMaybe "3000") (lookupEnv "PORT")
       putStrLn ("Serving at " <> port)
       run (read port) app 
-
 
 endAs = length adjs - 1
 endNs = length nouns - 1

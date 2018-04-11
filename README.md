@@ -1,6 +1,6 @@
 # RandomNameGenerator
 
-This is a random name generator written, available at: https://whispering-shore-20690.herokuapp.com/
+This is a random name generator written in Haskell, available at: https://whispering-shore-20690.herokuapp.com/
 
 ## Contributing
 

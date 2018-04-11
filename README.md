@@ -6,7 +6,7 @@ This is a random name generator written, available at: https://whispering-shore-
 
 *Contributions welcome!*
 
-You will need Stack to build and run locally. You will need to use the [Haskell Stack Heroku buildpack](https://github.com/mfine/heroku-buildpack-stack) to deploy to Heroku.
+You will need Stack to build and run locally. If you want to run on Heroku, then you will need to use the [Haskell Stack Heroku buildpack](https://github.com/mfine/heroku-buildpack-stack) to deploy.
 
 To run locally: 
 

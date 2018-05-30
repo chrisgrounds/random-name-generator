@@ -2,7 +2,6 @@ module Main where
 
 import Control.Monad (liftM, join)
 import Data.ByteString.Lazy.Char8 (pack, unpack)
-import Data.Monoid ((<>))
 import Data.Maybe (fromMaybe)
 import System.Environment (lookupEnv)
 import System.Random (randomRIO)
@@ -24,8 +23,7 @@ getRandomName = do
     randomNouns <- randomRIO (0, endNs)
     let adj = adjs !! randomAdj
     let noun = nouns !! randomNouns
-    let randomName = mconcat ["{\"name\": \"", adj, "_", noun, "\"}"]
-    return randomName
+    return $ mconcat ["{\"name\": \"", adj, "_", noun, "\"}"]
 
 app :: Application
 app _req f = join $ f `liftM` response
@@ -36,5 +34,6 @@ app _req f = join $ f `liftM` response
 main :: IO ()
 main = do
       port <- fmap (fromMaybe "3000") (lookupEnv "PORT")
-      putStrLn ("Serving at " <> port)
+      putStrLn ("Serving at " ++ port)
       run (read port) app 
+

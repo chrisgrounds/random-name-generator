@@ -1,6 +1,6 @@
 # RandomNameGenerator
 
-This is a random name generator written in Haskell, available at: https://whispering-shore-20690.herokuapp.com/
+This is a random name generator written in Haskell, available at: https://whispering-shore-20690.herokuapp.com/. This heroku instance uses the [Heroku Buildpack Stack](https://github.com/mfine/heroku-buildpack-stack.git) as the deploy script.
 
 ## Contributing
 

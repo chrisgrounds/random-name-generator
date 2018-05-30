@@ -14,12 +14,7 @@ import Network.HTTP.Types.Header (hContentType)
 
 import Vocabulary (adjs, nouns)
 
-main :: IO ()
-main = do
-      port <- fmap (fromMaybe "3000") (lookupEnv "PORT")
-      putStrLn ("Serving at " <> port)
-      run (read port) app 
-
+endAs, endNs :: Int
 endAs = length adjs - 1
 endNs = length nouns - 1
 
@@ -36,7 +31,10 @@ app :: Application
 app _req f = join $ f `liftM` response
     where
         response :: IO Response
-        response = do
-            n <- getRandomName
-            return $ responseLBS status200 [(hContentType, "application/json")] (pack n)
+        response = getRandomName >>= (\n -> return $ responseLBS status200 [(hContentType, "application/json")] (pack n))
 
+main :: IO ()
+main = do
+      port <- fmap (fromMaybe "3000") (lookupEnv "PORT")
+      putStrLn ("Serving at " <> port)
+      run (read port) app 

@@ -18,3 +18,7 @@ stack exec -- randomNameGenerator
 Then visit `localhost:3000`
 
 To contribute, fork, make your changes, and open up a PR.
+
+## AWS Lambda
+
+There is an AWS Lambda-deployed version of this [here](https://github.com/chris-bacon/randomNameGenerator-lambda).
